@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all # Use @ for views to be able to see it
 
     respond_to do |format|
       format.html # index.html.erb

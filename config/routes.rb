@@ -1,4 +1,8 @@
 Rideon::Application.routes.draw do
+  resources :ratings
+
+
+  root :to => 'Users#index'
   resources :users
 
 
