@@ -1,10 +1,16 @@
 Rideon::Application.routes.draw do
+  resources :authentications
+
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
+  controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
+
   resources :ratings
 
-
-  root :to => 'Users#index'
+  root to: 'authentications#home'
+  #root :to => 'Users#index'
   resources :users
 
+  #match '/auth/:provider/callback' => 'authentications#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

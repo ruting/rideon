@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Rideon" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "rideon" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -36,27 +36,60 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Rideon</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
+
+      <div class="container" id="nav-wrapper">
+        <!-- navbar will change to "navbar-fixed-top" as user scroll down the pages-->
+        <div class="navbar" id="nav">
+          <div class="navbar-inner">
+              <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#">rideon</a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                  <li><%= link_to "Standard", "/path1"  %></li>
+                  <li><%= link_to "Comfort", "/path2"  %></li>
+                  <li><%= link_to "Luxuary", "/path3"  %></li>
+                  <li><%= link_to "Forum", "/path3"  %></li>
+                </ul>
+                <ul class="nav pull-right">              
+                  <form class="navbar-search pull-left">
+                    <input type="text" class="search-query" placeholder="Search">
+                  </form>   
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                    <!-- If user has logged in-->
+                    <% if user_signed_in? %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logout <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                    </ul>
+                    </li>
+                    <!-- If user has not log in-->
+                    <% else %>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>login <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %></li>
+                          <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %></li>
+                        </ul>
+                      </li>
+                    <% end %> 
+                </ul>
+
+              </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="container-fluid">
+
+    <div class="container">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -84,6 +117,5 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
   </body>
 </html>
