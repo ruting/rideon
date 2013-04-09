@@ -3,12 +3,20 @@ Rideon::Application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
-
+  
+ 
   resources :ratings
 
   root to: 'authentications#home'
   #root :to => 'Users#index'
-  resources :users
+  resources :users, :path => 'user'
+
+  #Set custom routes for devise (registrations, authentications)
+  devise_scope :user do
+    #get "/", :to => "registrations#new"
+    get "/login" => "devise/sessions#new"
+    get "/logout" => "devise/sessions#destroy"
+  end
 
   #match '/auth/:provider/callback' => 'authentications#create'
 

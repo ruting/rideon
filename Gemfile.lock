@@ -77,6 +77,8 @@ GEM
       rack-oauth2 (>= 0.14.4)
       tzinfo
     ffi (1.6.0)
+    font-awesome-rails (3.0.2.0)
+      railties (>= 3.1)
     formatador (0.2.4)
     guard (1.7.0)
       formatador (>= 0.2.4)
@@ -259,6 +261,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   fb_graph
+  font-awesome-rails
   guard-rspec
   jquery-rails
   less-rails

@@ -1,5 +1,5 @@
 class Authentication < ActiveRecord::Base
-  attr_accessible :provider, :uid, :token, :token_secret, :user_id
+  attr_accessible :provider, :uid, :token, :token_secret, :user_id, :avatar
   belongs_to :user
   
   def self.from_omniauth(auth)

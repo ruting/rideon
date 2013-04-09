@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 #gem 'sqlite3'
 gem 'pg'
+#font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
+gem "font-awesome-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

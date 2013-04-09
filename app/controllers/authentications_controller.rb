@@ -10,6 +10,7 @@ class AuthenticationsController < ApplicationController
     
     if authentication
       flash[:notice] = "Logged in Successfully"
+      #session[:user_id] = authentication.user_id
       sign_in_and_redirect User.find(authentication.user_id)
     elsif current_user
       token = omni['credentials'].token
@@ -22,7 +23,7 @@ class AuthenticationsController < ApplicationController
       user = User.new
       user.provider = omni.provider
       user.uid = omni.uid
-        
+
       user.apply_omniauth(omni)
       
       if user.save
@@ -56,6 +57,10 @@ class AuthenticationsController < ApplicationController
       user.uid = omni.uid
       user.email = omni['extra']['raw_info'].email 
 
+      user.first_name = omni.info.first_name
+      user.last_name = omni.info.last_name
+      user.avatar = open(omni.info.image)
+      user.dob = omni.extra.raw_info.birthday
       user.apply_omniauth(omni)
 
       if user.save

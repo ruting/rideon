@@ -11,7 +11,7 @@ class User < ActiveRecord::Base # The User class is automatically mapped to the 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :dob, :avatar, :email, :password, :password_confirmation, :remember_me, :provider, :uid
 
-  has_attached_file :avatar, :styles => { :small => "100x100>", :thumb => "50x50>"}
+  has_attached_file :avatar, :styles => { :small => "100x100>", :thumb => "30x30>"}
   #validates :email, :first_name, :password, :presence => true # All fields must not be empty
   #validates :email, :uniqueness => true # Email must be unique
 

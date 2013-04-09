@@ -8,13 +8,13 @@
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
 // Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
 //       have the proper paths. So for now we use the absolute path.
-@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
-@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
-@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
-@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
+//@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
+//@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
+//@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
+//@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
 
 // Font Awesome
-@import "fontawesome";
+//@import "fontawesome";
 
 // Glyphicons
 @import "twitter/bootstrap/sprites.less";
@@ -27,8 +27,6 @@
 // If you'd like to override bootstrap's own variables, you can do so here as well
 // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
-// Example:
-// @linkColor: #ff0000;
 
 @import "twitter/bootstrap/reset.less";
 @import "twitter/bootstrap/variables.less";
@@ -49,14 +47,32 @@
 @import "twitter/bootstrap/utilities.less";
 @import "twitter/bootstrap/responsive";
 
+//Text customization
+@baseFontSize: 12px;
+@fontSizeLarge: @baseFontSize*3;
+@baseFontSmall: @baseFontSize*0.5;
+@fontSizeMini: @baseFontSize*0.25;
+
+//Border radius
+@baseBorderRadius: 2px;
+@borderRadiusLarge: 4px;
+@borderRadiusSmall: 2.5px;
+
+//Dropdowns
+@dropdownBackground: @white;
+@dropdownBorder: rgba(0,0,0,.2);
+@dropdownLinkColor: @grayDark;
+@dropdownLinkColorHover: @white;
+@dropdownLinkBackgroundHover: #5CB3FF;
+
 // Navbar customization
-@navbarHeight: 38px;
-@navbarBackground: #51a351;
-@navbarBackgroundHighlight: #62c462;
-@navbarText: white;
+@navbarHeight: 40px;
+@navbarBackground: #F5F0F0;
+@navbarBackgroundHighlight: #F5F0F0;
+@navbarText: #333333;
 @navbarBrandColor: #468847;
-@navbarLinkColor: @gray;
-@navbarLinkColorHover: @grayDarker;
+@navbarLinkColor: #333333;
+@navbarLinkColorHover: #5CB3FF;
 @navbarLinkColorActive: @navbarLinkColorHover;
 @navbarLinkBackgroundHover: transparent;
 @navbarLinkBackgroundActive: @navbarBackground;
