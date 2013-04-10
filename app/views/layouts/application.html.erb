@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Rideon" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "rideon" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -36,54 +36,109 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Rideon</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
+
+      <div class="container" id="nav-wrapper">
+        <!-- navbar will change to "navbar-fixed-top" as user scroll down the pages-->
+        <div class="navbar" id="nav">
+          <div class="navbar-inner">
+              <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#"><%= image_tag("header.png", :size => "50X50") %></a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                  <li><%= link_to "Standard", "/path1"  %></li>
+                  <li><%= link_to "Comfort", "/path2"  %></li>
+                  <li><%= link_to "Luxuary", "/path3"  %></li>
+                </ul>
+
+                <ul class="nav pull-right">              
+                  <form class="navbar-search pull-left input-append">
+                    <input name="main_search" type="text" class="search-query input-medium" placeholder="Search">
+                  </form>   
+                    <li class="divider-vertical"></li>
+                    <!-- If user has logged in-->
+                    <% if user_signed_in? %>
+                    <li class="profile">
+                      <ul class="nav">
+                        <li>
+                          <a href=""><%= image_tag(current_user.avatar.url(:thumb)) %>
+                            <% if !current_user.first_name.nil? %>
+                              <%= current_user.first_name.downcase %>
+                            <% end %>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="icon-user icon-large icon-border"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                    </ul>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="icon-cogs icon-large icon-border"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Account Settings", destroy_user_session_path, method: :delete %></li>
+                      <li><%= link_to "Privacy Settings", destroy_user_session_path, method: :delete %></li>
+                      <li class="divider"></li>
+                      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                    </li>
+                    <!-- If user has not log in-->
+                    <% else %>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>login <b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="padding-left:10px;padding-right:10px;padding-top:20px;">
+                          <!-- Login form here -->
+                              <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                              <%= f.email_field :email, :autofocus => true, :placeholder =>"Your Email", :class =>"span3" %>
+                              <%= f.password_field :password, :placeholder =>"New Password", :class =>"span3" %>
+                                <% if devise_mapping.rememberable? -%>
+                                    <label class="checkbox">
+                                      <%= f.check_box :remember_me %> Remember me
+                                      </label>
+                                <% end -%>
+                              <%= f.submit "Sign in", :class =>"btn btn-block btn-info" %>
+                              <% end %>
+                              <li class="divider"></li>
+                              <center>
+                              <%= link_to "Login with <i class=icon-facebook></i>".html_safe, user_omniauth_authorize_path(:facebook), :class=>"btn btn-default" %>
+                              <%= link_to "Login with <i class=icon-twitter></i>".html_safe, user_omniauth_authorize_path(:twitter), :class=>"btn btn-default" %>
+                              </center>
+                          </ul>
+                      </li>
+                    <% end %> 
+                </ul>
+
+              </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="container-fluid">
+
+      <div class="container">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
+        <div class="span12">
+          <!-- put <%= bootstrap_flash%> into individual views -->
+            
+            <%= yield %>
         </div>
-      </div><!--/row-->
+      </div>
+      </div> <!-- /container -->
 
       <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
+        <div class="container">
+        <p>&copy; 2013 rideon.sg. All rights reserved.</p>
+        </div>
+      </footer> <!-- /footer -->
 
-    </div> <!-- /container -->
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
-  </body>
-</html>
+  </body> <!-- /body -->
+</html> <!-- /html -->

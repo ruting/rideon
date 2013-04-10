@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 #gem 'sqlite3'
 gem 'pg'
+#font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
+gem "font-awesome-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,6 +40,16 @@ end
 
   gem 'paperclip' # Added to include upload images
   gem 'merit' # Add BADGES gem that is used to allocate points to users
+
+  # Normal user registration process with Devise
+  # Registration and logins with Facebook or Twitter
+ # And both at the same time
+  gem 'devise'
+  gem 'omniauth-twitter'
+  gem 'omniauth-facebook'
+  gem 'twitter'
+  gem 'fb_graph'
+  gem 'nifty-generators'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -52,3 +64,5 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test
