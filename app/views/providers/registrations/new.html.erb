@@ -1,0 +1,23 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :method => :POST) do |f| %>
+
+  <div><%= f.label :company_name %><br />
+  <%= f.text_field :name, :autofocus => true %></div>
+
+   <div><%= f.label :company_registered_number %><br />
+  <%= f.text_field :registered_number, :autofocus => true %></div>
+
+  <%= fields_for :user do |rf| %> <!-- need to pass in the @user -->
+  <div><%= rf.label :company_email %><br />
+  <%= rf.email_field :email, :autofocus => true %></div>
+
+  <div><%= rf.label :password %><br />
+  <%= rf.password_field :password %></div>
+
+  <div><%= rf.label :password_confirmation %><br />
+  <%= rf.password_field :password_confirmation %></div>
+  <% end %>
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+

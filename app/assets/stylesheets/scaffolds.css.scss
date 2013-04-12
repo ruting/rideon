@@ -1,0 +1,123 @@
+body {
+  background-color: #fff;
+  font-weight: bold;
+}
+
+footer {
+text-align: center;
+padding: 20px 0;
+margin-top: 70px;
+border-top: 1px solid #e5e5e5;
+background-color: #F5F0F0;
+min-height:460px;
+}
+
+nostyle{margin: 0, auto;}
+
+.container {
+    padding-top: 20px;
+}
+.navbar .brand {
+    max-height: 30px;
+    overflow: visible;
+    padding-top: 0.3em;
+    padding-bottom: 0;
+    vertical-align:middle;
+
+}
+.dropdown{
+    margin-right:-5px;
+    margin-left:-5px;
+
+}
+.profile {
+  margin-right:-10px;
+  height: 40px;
+  overflow:hidden;
+  .nav{
+     top: -5px; 
+  }
+
+  ul li {
+  font-size: 12px;
+
+    img{
+       width: 30px; 
+       height: 30px; 
+       border-radius: 4px;
+       box-shadow: 0 1px 0 #fff;
+    }
+  }
+
+}
+
+#nav.affix {
+  position: fixed; 
+  top: 0px; 
+  left: -5px;
+  right: -5px;
+
+    .navbar-inner {
+      padding-left:80px;
+      padding-right:80px;
+    }
+
+}
+
+
+input[type=text], input[type=password] {
+    //height: 18px !important;
+    // margin-top: 1%;
+}
+
+p, ol, ul, td {
+  //font-family: verdana, arial, helvetica, sans-serif;
+  //font-size: 13px;
+  //line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+
+div {
+  &.field, &.actions {
+    //margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    //font-size: 12px;
+    list-style: square;
+  }
+}

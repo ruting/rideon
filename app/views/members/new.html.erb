@@ -1,0 +1,72 @@
+<div class="span4">
+  <h2>Ride to work around the city with Rideon.</h2>
+
+  <p>
+  <i class="icon-suitcase icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+  <p>
+  <i class="icon-road icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+  <p>
+  <i class="icon-exchange icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+  <p>
+  <i class="icon-cloud-upload icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+</div>
+
+<div class="span7 offset1  well well-large">
+  <div class="span12">  
+  <font size="6px">Join us and create your first ride now!</font><br/>
+  <font size="4px">Simply ride, Simply fun</font><br/><br/>
+        <%= form_for @member, :url => { :action => "create" } do |f| %>
+
+
+  <div class="span7" style="margin-left:0;padding-right:12px">
+        <% if @user.errors.any?  || @member.errors.any?  %>
+          <div class="alert alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <% @member.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          </div>
+        <% end %>
+      <div class="controls">
+      <%= hidden_field_tag "user[roles][]", "member" %>
+      <%= f.text_field :first_name, :placeholder =>"First Name", :class =>"span6" %>
+      <%= f.text_field :last_name, :placeholder =>"Last Name", :class =>"span6" %><br/>
+
+      </div>
+      <div class="controls controls-row">
+      <%= fields_for :user do |rf| %> <!-- need to pass in the @user -->
+      <%= rf.text_field :email, :placeholder =>"Company Email", :class =>"span12" %><br/>
+      <%= rf.password_field :password, :placeholder =>"New Password", :class =>"span12" %><br/>
+      <%= rf.password_field :password_confirmation, :placeholder =>"Re-enter Password", :class =>"span12" %><br/>
+      <% end %>
+      </div>
+      <%= f.submit "Sign up", :class =>"btn btn-block btn-info" %>
+      <% end %>
+  </div>  
+  <div class="well span5" style="background:white;">
+   <%= link_to image_tag("signup-fb.png", :alt => "Sign Up with Facebook"), "/auth/facebook" %><br/><br/>
+   <%= link_to image_tag("signup-tw.png", :alt => "Sign In with Twitter"), "/auth/twitter" %><br/><br/>
+   <p style="font-size:11px;text-align:justify;">One-click easy signup with Facebook or Twitter & automatically find your ride!</p>
+  </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

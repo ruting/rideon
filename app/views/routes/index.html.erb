@@ -1,0 +1,48 @@
+<!-- show current routes -->
+<div class="span6">
+	<table class="table table-striped table-condensed table-hover table-bordered" style="font-size:12px;">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Provider</th>
+				<th>Est. Price</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @routes.each do |route| %>
+			<tr>
+			<td><%= route.id %></td>
+			<td><%= route.user_id %></td>
+			<td>$ <%= route.price %></td>
+			<td><%= route.min %></td>
+			<td><%= route.max %></td>
+			<td><%= route.date %></td>
+			<td><%= route.time %></td>
+			<td>          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      route_path(route.id),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+            </td>
+			</tr>
+			<% end %>
+		</tbody>
+
+
+
+	</table>
+  <%= link_to t('.new', :default => t("helpers.links.Create New Route")),
+            new_route_path,
+            :class => 'btn btn-small btn-info' %>
+</div>
+
+
+<!-- Show google map -->
+<div class="span6 well ">
+</div>

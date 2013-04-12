@@ -1,0 +1,38 @@
+<div class="span5 well">
+	<h1><center>Add a new Route</center></h1>
+<%= form_for @route, :html => { :multipart => true, :class => '' } do |f| %>
+
+      <%= f.text_field :transport, :class => 'span12', placeholder:"Type of Transport"  %>
+
+      <%= f.text_field :price, :class => 'span12', placeholder: "Price"  %>
+
+      <%= f.text_field :min, :class => 'span6', placeholder: "Min pax"  %>
+
+      <%= f.text_field :max, :class => 'span6', placeholder: "Max pax"  %>
+
+      <%= f.text_field :date, :class => 'span12', placeholder: "Date"  %>
+
+ 
+ <!-- Partial fields for adding new source and location -->
+	<%= fields_for :source do |builder| %>
+	FROM:
+		<%= render 'source_fields', f: builder %>
+	<% end %>
+    <%= link_to_add_locations "Add Source", f, :source %> <!-- ONLY BUS / CAR CAN DO THIS -->
+ <!-- /Partial fields for adding new source and location -->
+
+
+  <!-- Partial fields for adding new source and location -->
+	<%= fields_for :destination do |builder| %>
+	To:
+		<%= render 'source_fields', f: builder %>
+	<% end %>
+    <%= link_to_add_locations "Add Destination", f, :destination %> <!-- ONLY BUS / CAR CAN DO THIS -->
+ <!-- /Partial fields for adding new source and location -->
+
+
+  	<%= f.submit "Create", :class =>"btn btn-large btn-info btn-block" %>
+<% end %>
+</div>
+
+<div class="span6 offset1 well"><h1>GOOGLE MAPS APPEAR HERE</h1></div>

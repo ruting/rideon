@@ -1,0 +1,12 @@
+<!-- THIS WILL BE THE HOME PAGE for LOGIN USER -->
+
+<% if user_signed_in? %>
+<!-- redirect to current route pages -->
+Logged in as <strong><%= current_user.email %></strong>.
+
+<% else %>
+<center>
+	<%= link_to "Sign up as provider", new_provider_path %>  | <%= link_to "Sign up as user", new_member_path %> |
+	<%= link_to "Login", new_user_session_path %>
+</center>
+<% end %>

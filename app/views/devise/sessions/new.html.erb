@@ -1,0 +1,29 @@
+<!-- GENENRAL LOGIN PAGE FOR ALL USERS-->
+<div class="span12">
+
+<div class="span8 offset2  well well-large">
+<div class="span12" style="text-align:justify">	
+<font size="6px">Login</font><br/>
+<font size="4px"></font><br/><br/>
+<div class="span7" style="margin-left:0;padding-right:12px">
+	<%= bootstrap_flash %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+      <%= f.email_field :email, :autofocus => true, :placeholder =>"Your Email", :class =>"span12" %><br/>
+	  <%= f.password_field :password, :placeholder =>"New Password", :class =>"span12" %><br/>
+	    <% if devise_mapping.rememberable? -%>
+	    <label class="checkbox">
+        <%= f.check_box :remember_me %> Remember me
+        </label>
+  <% end -%>
+<%= f.submit "Sign in", :class =>"btn btn-block btn-info" %>
+<% end %>
+</div>
+<div class="well span5" style="padding-top:0;border-right:none;border-top:none;border-bottom:none;border-shadow:none;text-align:center">
+ <%= link_to image_tag("signup-fb.png", :alt => "Login Up with Facebook"), "auth/facebook" %><br/><br/>
+ <%= link_to image_tag("signup-tw.png", :alt => "Login In with Twitter"), "auth/twitter" %><br/><br/>
+ [<%= link_to "Register", new_user_registration_path %> |<%= link_to "Forget Password", new_user_registration_path %> ]
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,67 @@
+<div class="span4">
+  <h2>Ride to work around the city with Rideon.</h2>
+
+  <p>
+  <i class="icon-suitcase icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+  <p>
+  <i class="icon-road icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+  <p>
+  <i class="icon-exchange icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+  <p>
+  <i class="icon-cloud-upload icon-4x pull-left"></i><font color="#5CB3FF" size="4px">Product design.</font> From the top of the organization, Kyruus is committed to product design done right.
+  </p>
+
+</div>
+
+<div class="span7 offset1  well well-large">
+  <div class="span12">  
+  <font size="6px">Join us and create your first ride now!</font><br/>
+  <font size="4px">Simply ride, Simply fun</font><br/><br/>
+        <%= form_for @provider, :url => { :action => "create" } do |f| %>
+
+<% if @user.errors.any?  || @provider.errors.any?  %>
+<div class="alert alert-error">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% @provider.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+        <% end %>
+        <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+        <% end %>
+</div>
+<% end %>
+
+
+
+        <div class="controls">
+        <%= hidden_field_tag "user[roles][]", "provider" %>
+        <%= f.text_field :name, :placeholder =>"Company Name", :class =>"span12" %>
+        <%= f.text_field :registered_number, :placeholder =>"Registration Number", :class =>"span12" %><br/>
+
+        </div>
+        <div class="controls controls-row">
+        <%= fields_for :user do |rf| %> <!-- need to pass in the @user -->
+        <%= rf.text_field :email, :placeholder =>"Company Email", :class =>"span12" %><br/>
+        <%= rf.password_field :password, :placeholder =>"New Password", :class =>"span12" %><br/>
+        <%= rf.password_field :password_confirmation, :placeholder =>"Re-enter Password", :class =>"span12" %><br/>
+        <% end %>
+        </div>
+        <%= f.submit "Sign up", :class =>"btn btn-block btn-info" %>
+        <% end %>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
