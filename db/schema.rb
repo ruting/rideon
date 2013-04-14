@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20130412051309) do
 
   create_table "destinations", :force => true do |t|
     t.integer  "route_id"
-    t.float    "address"
+    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.time     "time"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20130412051309) do
 
   create_table "sources", :force => true do |t|
     t.integer  "route_id"
-    t.float    "address"
+    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.time     "time"
