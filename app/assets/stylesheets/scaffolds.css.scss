@@ -15,7 +15,12 @@ min-height:460px;
 nostyle{margin: 0, auto;}
 
 .container {
-    padding-top: 20px;
+    padding-top: 10px;
+}
+
+/* solve google map problem */
+.navbar{
+    z-index:99999999;
 }
 .navbar .brand {
     max-height: 30px;
@@ -121,3 +126,13 @@ div {
     list-style: square;
   }
 }
+
+/* fix and resolved map distortion in twitter bootstrap 2.0 */
+  #map-canvas img{
+    max-width:none;
+
+  }
+  #map-canvas label{
+    width: auto;
+    display:inline;
+  }
