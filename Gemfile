@@ -56,6 +56,10 @@ end
   #CanCan is a gem that define permission for the users (admin, members, providers)
   gem 'cancan'
   gem 'role_model'
+
+
+  # google maps
+  gem "geocoder"
   
 # To use ActiveModel has_secure_password
 #gem 'bcrypt-ruby', '~> 3.0.0'
